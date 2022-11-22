@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putpercent_len.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 16:43:30 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/22 17:13:31 by cpapot           ###   ########.fr       */
+/*   Created: 2022/11/22 14:03:13 by cpapot            #+#    #+#             */
+/*   Updated: 2022/11/22 14:05:21 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_printf(const char *formats, ...)
+ssize_t	ft_putpercent_len(void)
 {
 	ssize_t	len;
-	
-	va_list	variadic;
 
-	va_start(variadic, formats);
-
-	va_end(variadic);
+	len = write(1, '%', 1);
+	return (len);
 }
