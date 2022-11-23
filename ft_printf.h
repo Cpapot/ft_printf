@@ -6,7 +6,7 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:49:21 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/23 17:48:07 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/23 19:10:28 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 int		ft_printf(const char *format, ...);
 ssize_t	ft_putnull_len(void);
-ssize_t	ft_putchar_len(char c);
+ssize_t	ft_putchar_len(int c);
 ssize_t	ft_putint_len(int nbr);
 ssize_t	ft_putpercent_len(void);
 ssize_t	ft_putstr_len(char *str);
