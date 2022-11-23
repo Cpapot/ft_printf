@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexamaj_len.c                                :+:      :+:    :+:   */
+/*   ft_puthexamin_len.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 11:42:54 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/23 18:24:31 by cpapot           ###   ########.fr       */
+/*   Created: 2022/11/23 17:08:46 by cpapot            #+#    #+#             */
+/*   Updated: 2022/11/23 18:24:27 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static int	ft_hexa_size(unsigned int nbr)
 	return (index);
 }
 
-static char	*ft_convert_hexa_maj(unsigned int nbr)
+static char	*ft_convert_hexa_min(unsigned int nbr)
 {
 	char	*base;
 	char	*result;
 	int		size;
 	int		index;
 
-	base = "0123456789ABCDEF";
+	base = "0123456789abcdef";
 	size = ft_hexa_size(nbr);
 	result = malloc(sizeof(char) * (size + 1));
 	if (result == NULL)
@@ -53,12 +53,12 @@ static char	*ft_convert_hexa_maj(unsigned int nbr)
 	return (result);
 }
 
-ssize_t	ft_puthexamaj_len(unsigned int nbr)
+ssize_t	ft_puthexamin_len(unsigned int nbr)
 {
 	ssize_t	len;
 	char	*str;
 
-	str = ft_convert_hexa_maj(nbr);
+	str = ft_convert_hexa_min(nbr);
 	if (!str)
 		return (-1);
 	len = write(1, str, ft_strlen(str));

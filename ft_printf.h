@@ -6,7 +6,7 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:49:21 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/22 17:23:08 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/23 17:48:07 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 # include <stddef.h>
 # include "libft/libft.h"
 
+int		ft_printf(const char *format, ...);
+ssize_t	ft_putnull_len(void);
 ssize_t	ft_putchar_len(char c);
 ssize_t	ft_putint_len(int nbr);
 ssize_t	ft_putpercent_len(void);
 ssize_t	ft_putstr_len(char *str);
 ssize_t	ft_putunsint_len(unsigned int nbr);
-ssize_t	ft_callformat(char const *format);
+ssize_t	ft_puthexamin_len(unsigned int nbr);
+ssize_t	ft_puthexamaj_len(unsigned int nbr);
+ssize_t	ft_puthexavoid_len(void *arg);
+ssize_t	ft_callformat(char const *format, va_list variadic);
 
 #endif

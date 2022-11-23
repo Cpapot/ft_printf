@@ -6,16 +6,17 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:39:55 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/22 12:12:06 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/23 19:02:51 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-ssize_t	ft_putchar_len(char c)
+ssize_t	ft_putchar_len(int char)
 {
 	ssize_t	len;
-
-	len = write(1, c, 1);
+	char	c;
+	
+	len = write(1, &c, 1);
 	return (len);
 }

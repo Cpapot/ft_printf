@@ -6,7 +6,7 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:03:13 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/22 14:05:21 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/23 18:29:33 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ ssize_t	ft_putpercent_len(void)
 {
 	ssize_t	len;
 
-	len = write(1, '%', 1);
+	len = write(1, "%", 1);
 	return (len);
 }
