@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 16:43:30 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/22 17:13:31 by cpapot           ###   ########.fr       */
+/*   Created: 2022/11/24 10:48:33 by cpapot            #+#    #+#             */
+/*   Updated: 2022/11/24 13:54:47 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *formats, ...)
+int	ft_printf(const char *format, ...)
 {
 	ssize_t	len;
-	
 	va_list	variadic;
 
-	va_start(variadic, formats);
-
+	va_start(variadic, format);
+	len = ft_callformat(format, variadic);
 	va_end(variadic);
+	return ((int)len);
 }

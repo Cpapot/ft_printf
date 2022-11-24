@@ -6,7 +6,7 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:44:54 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/23 19:02:10 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/24 13:37:05 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ssize_t	ft_skipword(char const *format, int index)
 	char	*word;
 
 	wordsize = 0;
-	while (format[index] != '%' && format[index] != '\0')
+	while (format[index] != '\0' && format[index] != '%')
 	{
 		index++;
 		wordsize++;
@@ -41,26 +41,25 @@ static ssize_t	ft_findformat(char const *format, int index, va_list variadic)
 	ssize_t	len;
 
 	len = 0;
-	index++;
-	if (format[index] == 'c')
+	index = index + 2;
+	if (format[index - 1] == 'c')
 		return (ft_putchar_len(va_arg(variadic, int)));
-	if (format[index] == 's')
+	if (format[index - 1] == 's')
 		return (ft_putstr_len(va_arg(variadic, char *)));
-	if (format[index] == 'p')
+	if (format[index - 1] == 'p')
 		return (ft_puthexavoid_len(va_arg(variadic, void *)));
-	if (format[index] == 'd')
+	if (format[index - 1] == 'd')
 		return (ft_putint_len(va_arg(variadic, int)));
-	if (format[index] == 'i')
+	if (format[index - 1] == 'i')
 		return (ft_putint_len(va_arg(variadic, int)));
-	if (format[index] == 'u')
+	if (format[index - 1] == 'u')
 		return (ft_putunsint_len(va_arg(variadic, unsigned int)));
-	if (format[index] == 'x')
+	if (format[index - 1] == 'x')
 		return (ft_puthexamin_len(va_arg(variadic, unsigned int)));
-	if (format[index] == 'X')
+	if (format[index - 1] == 'X')
 		return (ft_puthexamaj_len(va_arg(variadic, unsigned int)));
-	if (format[index] == '%')
+	if (format[index - 1] == '%')
 		return (ft_putpercent_len());
-	len = ft_skipword(format, index);
 	return (len);
 }
 
@@ -68,7 +67,7 @@ ssize_t	ft_callformat(char const *format, va_list variadic)
 {
 	ssize_t		tmp;
 	ssize_t		len;
-	static int	index = 0;
+	int			index;
 
 	len = 0;
 	index = 0;
@@ -76,16 +75,19 @@ ssize_t	ft_callformat(char const *format, va_list variadic)
 	{
 		tmp = 0;
 		tmp = ft_skipword(format, index);
+		index = tmp + index;
 		if (tmp == -1)
 			return (-1);
 		len = len + tmp;
 		tmp = 0;
-		tmp = ft_findformat(format, index, variadic);
+		if (format[index] == '%')
+		{
+			tmp = ft_findformat(format, index, variadic);
+			index = index + 2;
+		}
 		if (tmp == -1)
 			return (-1);
-		index++;
 		len = len + tmp;
-		index++;
 	}
 	return (len);
 }

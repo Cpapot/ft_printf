@@ -6,7 +6,7 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:08:46 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/23 18:24:27 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/24 13:44:40 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_hexa_size(unsigned int nbr)
 	int	index;
 
 	index = 0;
-	while (nbr > 16)
+	while (nbr >= 16)
 	{
 		nbr = nbr / 16;
 		index++;
@@ -41,7 +41,7 @@ static char	*ft_convert_hexa_min(unsigned int nbr)
 		return (NULL);
 	index = size - 1;
 	ft_bzero(result, size + 1);
-	while (nbr > 16)
+	while (nbr >= 16)
 	{
 		result[index] = base[nbr % 16];
 		nbr = nbr / 16;
@@ -58,9 +58,20 @@ ssize_t	ft_puthexamin_len(unsigned int nbr)
 	ssize_t	len;
 	char	*str;
 
-	str = ft_convert_hexa_min(nbr);
-	if (!str)
-		return (-1);
+	if (nbr == 0)
+	{
+		str = malloc(sizeof(char) * 2);
+		if (!str)
+			return (-1);
+		str[0] = '0';
+		str[1] = '\0';
+	}
+	else
+	{
+		str = ft_convert_hexa_min(nbr);
+		if (!str)
+			return (-1);
+	}
 	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);

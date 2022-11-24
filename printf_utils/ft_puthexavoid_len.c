@@ -6,7 +6,7 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:32:26 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/23 18:24:22 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/24 13:18:01 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,20 @@ ssize_t	ft_puthexavoid_len(void *arg)
 	ssize_t	len;
 	char	*str;
 
-	str = ft_convert_hexa((uintptr_t)arg);
-	if (!str)
-		return (-1);
+	if (arg == NULL)
+	{
+		str = malloc(sizeof(char) * 2);
+		if (!str)
+			return (-1);
+		str[0] = '0';
+		str[1] = '\0';
+	}
+	else
+	{
+		str = ft_convert_hexa((uintptr_t)arg);
+		if (!str)
+			return (-1);
+	}
 	len = write(1, "0x", 2);
 	if (len == -1)
 		return (len);
