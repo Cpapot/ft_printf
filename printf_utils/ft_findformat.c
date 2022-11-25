@@ -6,9 +6,11 @@
 /*   By: cpapot <cpapot@student.42lyon.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:44:54 by cpapot            #+#    #+#             */
-/*   Updated: 2022/11/24 17:03:19 by cpapot           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:22:57 by cpapot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../ft_printf.h"
 
 #include "../ft_printf.h"
 
@@ -73,20 +75,21 @@ ssize_t	ft_callformat(char const *format, va_list variadic)
 	index = 0;
 	while (format[index] != '\0')
 	{
+		tmp = 0;
 		tmp = ft_skipword(format, index);
 		index = tmp + index;
 		if (tmp == -1)
 			return (-1);
 		len = len + tmp;
+		tmp = 0;
 		if (format[index] == '%' && format[index + 1] != '\0')
 		{
 			tmp = ft_findformat(format, index, variadic);
-			index++;
+			index = index + 2;
 		}
 		if (tmp == -1)
 			return (-1);
 		len = len + tmp;
-		index++;
 	}
 	return (len);
 }
